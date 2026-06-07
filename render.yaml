@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: gentefarma-evolution-api
+    runtime: node
+    branch: main
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: LOG_LEVEL
+        value: info
+      - key: INSTANCE_NAME
+        value: Gentefarma
+      - key: DATABASE_PATH
+        value: ./data
+      - key: SESSION_PATH
+        value: ./sessions
+      - key: TOKEN
+        sync: false
+      - key: DOCKER
+        value: "true"
+    buildCommand: npm install
+    startCommand: npm run start
+    healthCheckPath: /
+    autoDeploy: true
